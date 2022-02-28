@@ -1,10 +1,10 @@
-import { Suggestions } from "../components/types";
+import { Suggestions } from '../components/types'
 
 function filterList(suggestions: Suggestions, input: string) {
-  const filtered = suggestions.filter(
-    (name) => name.toLowerCase().indexOf(input.toLowerCase()) > -1
-  );
+    const filtered = suggestions.filter(
+        (name) => name.toLowerCase().indexOf(input.toLowerCase()) > -1
+    )
 
-  return filtered;
+    return filtered
 }
-export default filterList;
+export default filterList
