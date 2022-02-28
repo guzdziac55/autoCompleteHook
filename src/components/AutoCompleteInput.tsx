@@ -1,7 +1,8 @@
 import { Suggestions } from './types'
 import React, { useEffect } from 'react'
-import AutoCompleteDropdown from './AutoCompleteDropdown'
+// import AutoCompleteDropdown from './AutoCompleteDropdown'
 import useAutoComplete from '../hooks/useAutoComplete'
+import { AutoCompleteItem } from './AutoCompleteItem'
 
 interface AutoCompleteInputProps {
     suggestions: Suggestions
@@ -36,11 +37,18 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
                 value={input}
                 onChange={(e) => onChange(e)}
             ></input>
-            <AutoCompleteDropdown
-                filtered={filtered}
-                active={activeIndex}
-                onChange={setInput}
-            />
+
+            <ul>
+                {filtered.map((item, index) => (
+                    <AutoCompleteItem
+                        key={item}
+                        item={item}
+                        focus={activeIndex === index}
+                        setInput={setInput}
+                        onKeyDown={onKeyDown}
+                    />
+                ))}
+            </ul>
         </>
     )
 }

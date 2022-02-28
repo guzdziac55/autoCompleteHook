@@ -28,7 +28,7 @@ const useAutoComplete = () => {
         setActiveIndex(0)
     }
 
-    const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const onKeyDown = (e: React.KeyboardEvent<Element>) => {
         const key = e.code
 
         if (isShow) {
