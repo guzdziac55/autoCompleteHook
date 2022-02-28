@@ -60,7 +60,7 @@ const useAutoComplete = () => {
         }
     }
 
-    return [
+    return {
         onChange,
         onKeyDown,
         input,
@@ -68,7 +68,7 @@ const useAutoComplete = () => {
         filtered,
         activeIndex,
         setSuggestion,
-    ] as const
+    } as const
 }
 
 export default useAutoComplete

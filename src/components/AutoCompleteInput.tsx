@@ -12,7 +12,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
     suggestions,
     placeholder,
 }) => {
-    const [
+    const {
         onChange,
         onKeyDown,
         input,
@@ -20,7 +20,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         filtered,
         activeIndex,
         setSuggestion,
-    ] = useAutoComplete()
+    } = useAutoComplete()
 
     useEffect(() => {
         setSuggestion(suggestions)
@@ -39,7 +39,7 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
             <AutoCompleteDropdown
                 filtered={filtered}
                 active={activeIndex}
-                setItem={setInput}
+                onChange={setInput}
             />
         </>
     )

@@ -4,13 +4,13 @@ import classes from './AutoCompleteDropdown.module.css'
 interface AutoCompleteDropdownProps {
     filtered: Suggestions
     active: number
-    setItem: (item: string) => void
+    onChange: (item: string) => void
 }
 
 const AutoCompleteDropdown: React.FC<AutoCompleteDropdownProps> = ({
     filtered,
     active,
-    setItem,
+    onChange,
 }) => {
     return (
         <ul>
@@ -19,8 +19,9 @@ const AutoCompleteDropdown: React.FC<AutoCompleteDropdownProps> = ({
 
                 return (
                     <li
+                        tabIndex={0}
                         onClick={() => {
-                            setItem(item)
+                            onChange(item)
                         }}
                         className={activeStyle}
                         key={item}
