@@ -1,13 +1,13 @@
 import { Suggestions } from "./types";
 import classes from "./AutoCompleteDropdown.module.css";
 
-interface AutoCompleteDropdown {
+interface AutoCompleteDropdownProps {
   filtered: Suggestions;
   active: number;
-  setItem: (item: string) => string;
+  setItem: (item: string) => void;
 }
 
-const AutoCompleteDropdown: React.FC<AutoCompleteDropdown> = ({
+const AutoCompleteDropdown: React.FC<AutoCompleteDropdownProps> = ({
   filtered,
   active,
   setItem,
@@ -18,7 +18,13 @@ const AutoCompleteDropdown: React.FC<AutoCompleteDropdown> = ({
         const activeStyle = index === active ? classes.active : "";
 
         return (
-          <li onClick={setItem(item)} className={activeStyle} key={item}>
+          <li
+            onClick={() => {
+              setItem(item);
+            }}
+            className={activeStyle}
+            key={item}
+          >
             {item}
           </li>
         );

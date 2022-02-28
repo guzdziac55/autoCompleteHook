@@ -17,24 +17,28 @@ const useAutoComplete = () => {
     setInput(value);
 
     if (value.length > 0) {
-      filtered = filter(suggestions, input);
+      filtered = filter(suggestions, value);
+      setFiltered(filtered);
       setIsShow(true);
+    } else {
+      setIsShow(false);
+      setFiltered([]);
     }
 
-    if (filtered) setFiltered(filtered);
     setActiveIndex(0);
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const key = e.code;
-    if (isShow && filtered) {
+
+    if (isShow) {
       switch (key) {
-        case "Keyup":
+        case "ArrowUp":
           if (activeIndex > 0) {
             setActiveIndex((prevIndex) => prevIndex - 1);
           }
           break;
-        case "Keydown":
+        case "ArrowDown":
           if (activeIndex < filtered.length - 1) {
             setActiveIndex((prevIndex) => prevIndex + 1);
           }
@@ -42,9 +46,12 @@ const useAutoComplete = () => {
         case "Enter":
           setInput(filtered[activeIndex]);
           setIsShow(false);
+          setActiveIndex(0);
+          setFiltered([]);
           break;
         case "Escape":
           setIsShow(false);
+          setFiltered([]);
           break;
 
         default:
@@ -65,10 +72,3 @@ const useAutoComplete = () => {
 };
 
 export default useAutoComplete;
-
-// const [input, setInput] = useState<string>("");
-// const [active, setActive] = useState<number>(0);
-// const [isShow, setIsShow] = useState<boolean>(false);
-// const [filtered, setFiltered] = useState<string[]>([]);
-// const [activeIndex, setActiveIndex] = useState<number>(0);
-// const [suggestions, setSuggestion] = useState<Suggestions>([]);

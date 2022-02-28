@@ -23,16 +23,8 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   ] = useAutoComplete();
 
   useEffect(() => {
-    console.log(input);
-  }, [input]);
-
-  useEffect(() => {
     setSuggestion(suggestions);
   }, []);
-
-  useEffect(() => {
-    console.log(filtered);
-  }, [filtered]);
 
   return (
     <>
@@ -53,12 +45,4 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
   );
 };
 
-// filtered: Suggestions;
-// active: number;
-// setItem: () => void;
-
 export default AutoCompleteInput;
-
-// wiec musisz ten dialog bezposrednio w body renderowac (cos takiego jak react Portal jest) i potem zbierac koordynaty inputa
-// za pomoca getBoundingClientRect przykladowo
-// i na podstawie tego ten dropdown ustawiac

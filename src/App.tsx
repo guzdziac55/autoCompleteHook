@@ -1,7 +1,6 @@
 import "./App.css";
 
 import AutoCompleteInput from "./components/AutoCompleteInput";
-// import AutoCompleteDropdown from "./components/AutoCompleteDropdown";
 
 const arraySuggestion = ["Dawid", "Guzik ", "Dominika", "Adrian"];
 
@@ -17,4 +16,3 @@ function App() {
 }
 
 export default App;
-// musimy zwrócić koordy inputa
