@@ -1,6 +1,5 @@
 import { Suggestions } from './types'
 import React, { useEffect } from 'react'
-// import AutoCompleteDropdown from './AutoCompleteDropdown'
 import useAutoComplete from '../hooks/useAutoComplete'
 import { AutoCompleteItem } from './AutoCompleteItem'
 
@@ -15,6 +14,8 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
 }) => {
     const {
         onChange,
+        isShow,
+        setIsShow,
         onKeyDown,
         input,
         setInput,
@@ -27,6 +28,12 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
         setSuggestion(suggestions)
     }, [setSuggestion, suggestions])
 
+    const handleClickItem = (item: string) => {
+        console.log('colled ? ')
+        setIsShow(false)
+        setInput(item)
+    }
+
     return (
         <>
             <input
@@ -37,18 +44,20 @@ const AutoCompleteInput: React.FC<AutoCompleteInputProps> = ({
                 value={input}
                 onChange={(e) => onChange(e)}
             ></input>
-
-            <ul>
-                {filtered.map((item, index) => (
-                    <AutoCompleteItem
-                        key={item}
-                        item={item}
-                        focus={activeIndex === index}
-                        setInput={setInput}
-                        onKeyDown={onKeyDown}
-                    />
-                ))}
-            </ul>
+            {isShow && (
+                <ul>
+                    {/* render ul conditionaly when list is show */}
+                    {filtered.map((item, index) => (
+                        <AutoCompleteItem
+                            key={item}
+                            item={item}
+                            onClick={handleClickItem}
+                            focus={activeIndex === index}
+                            onKeyDown={onKeyDown}
+                        />
+                    ))}
+                </ul>
+            )}
         </>
     )
 }

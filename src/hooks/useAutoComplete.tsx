@@ -17,7 +17,7 @@ const useAutoComplete = () => {
         setInput(value)
 
         if (value.length > 0) {
-            filteredArray = filter(suggestions, value)
+            filteredArray = filter(suggestions, value) // run filter function
             setFiltered(filteredArray)
             setIsShow(true)
         } else {
@@ -62,6 +62,8 @@ const useAutoComplete = () => {
 
     return {
         onChange,
+        isShow,
+        setIsShow,
         onKeyDown,
         input,
         setInput,
