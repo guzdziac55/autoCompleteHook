@@ -12,7 +12,6 @@ export const AutoCompleteItem: React.FC<AutoCompleteItemProps> = ({
     item,
     focus,
     onClick,
-
     onKeyDown,
 }) => {
     const ref = useRef<HTMLLIElement>(null)
@@ -20,8 +19,6 @@ export const AutoCompleteItem: React.FC<AutoCompleteItemProps> = ({
     useEffect(() => {
         if (focus) {
             ref.current?.focus()
-            console.log('focus')
-            console.log(ref.current)
         }
     }, [focus])
 

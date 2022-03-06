@@ -25,7 +25,7 @@ const useAutoComplete = () => {
             setFiltered([])
         }
 
-        setActiveIndex(0)
+        setActiveIndex(-1)
     }
 
     const onKeyDown = (e: React.KeyboardEvent<Element>) => {
